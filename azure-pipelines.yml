@@ -40,7 +40,6 @@ steps:
 - bash: |
     if [[ $TOXENV == "py" ]];
     then
-      $PYTHON -m tox -- --junitxml=unittests/TEST-$(AGENT.JobName).xml
       $PYTHON -m tox -e coverage,codecov
     else
       $PYTHON -m tox
