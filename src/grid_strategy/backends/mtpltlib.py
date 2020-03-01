@@ -2,8 +2,8 @@ from matplotlib import gridspec
 import matplotlib.pyplot as plt
 import numpy as np
 
-class Matplotlib:
 
+class Matplotlib:
     def __init__(self, alignment="center"):
         self.alignment = alignment
 
@@ -56,8 +56,6 @@ class Matplotlib:
                 ax_specs.append(gs[r, s:e])
 
         return ax_specs
-
-
 
 
 # class Plotly:

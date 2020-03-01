@@ -2,6 +2,7 @@ import pytest
 from unittest import mock
 
 from grid_strategy.strategies import SquareStrategy
+import grid_strategy.backends
 
 
 class SpecValue:

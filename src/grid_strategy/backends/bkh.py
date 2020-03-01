@@ -4,17 +4,19 @@ from bokeh.io import show, output_file
 
 class JustifiedGrid:
     def __init__(self, nrows, grid_arrangement):
-            self.plots = [[]]
-            self.grid_arrangement = grid_arrangement
-            self.current_row = 0
-            self.nrows = nrows
+        self.plots = [[]]
+        self.grid_arrangement = grid_arrangement
+        self.current_row = 0
+        self.nrows = nrows
 
     def add_plot(self, plot):
         self.plots[self.current_row].append(plot)
         if len(self.plots[self.current_row]) == self.grid_arrangement[self.current_row]:
             self.plots.append([])
             self.current_row += 1
-            assert self.current_row <= self.nrows, "Error: More graphs added to layout than previously specified."
+            assert (
+                self.current_row <= self.nrows
+            ), "Error: More graphs added to layout than previously specified."
 
     def add_plots(self, plot_list):
         for plot in plot_list:
@@ -41,7 +43,9 @@ class AlignedGrid:
         if len(self.plots[self.current_row]) == self.grid_arrangement[self.current_row]:
             self.plots.append([])
             self.current_row += 1
-        assert self.current_row <= self.nrows, "Error: More graphs added to the layout than previously specified."
+        assert (
+            self.current_row <= self.nrows
+        ), "Error: More graphs added to the layout than previously specified."
 
     def add_plots(self, plots):
         for plot in plots:
@@ -49,7 +53,7 @@ class AlignedGrid:
 
     def output_dest(self, file):
         output_file(file)
-    
+
     def show_plot(self):
         for row in self.plots:
             if len(row) == max(self.grid_arrangement):
@@ -65,8 +69,8 @@ class AlignedGrid:
         l = layout(self.plots, sizing_mode="scale_both")
         show(l)
 
+
 class Bokeh:
-    
     def __init__(self, alignment):
         self.alignment = alignment
 
